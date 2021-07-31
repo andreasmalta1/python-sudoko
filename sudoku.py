@@ -1,4 +1,5 @@
-# Sudoku Solver
+# Will solve any solvable sudoku problem
+# Enter the puzzle in the sudoku_board variable and enter -1 for the unknown values
 
 # Function to find the next empty (-1) slot
 def find_next_empty(puzzle):
@@ -14,6 +15,7 @@ def find_next_empty(puzzle):
 def is_valid(puzzle, guess, row, col):
     row_values = puzzle[row]
     # If the number guessed is already in the row/column/mini square then False is returned and another guess is made
+    # If false is returned than the value is valid
     if guess in row_values:
         return False
     col_values = [puzzle[i][col] for i in range(9)]
@@ -26,7 +28,6 @@ def is_valid(puzzle, guess, row, col):
         for c in range(col_start, col_start+3):
             if puzzle[r][c] == guess:
                 return False
-    # Guess is valid
     return True
 
 
@@ -48,6 +49,8 @@ def solve_sudoku(puzzle):
 
 
 if __name__ == '__main__':
+    # Sudoku problem
+    # -1 are the unknown numbers
     example_board = [
         [6, -1, -1, -1, -1, 5, -1, -1, -1],
         [-1, -1, -1, 3, -1, 9, -1, 5, -1],
